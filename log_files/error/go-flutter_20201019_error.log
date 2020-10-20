@@ -1,0 +1,5 @@
+time="2020-10-19T23:46:18.036229+07:00" level=error msg="pq: duplicate key value violates unique constraint \"users_email_key\"" file=/Users/nguyenduy/Documents/workspace/codes/golang/Go/src/github.com/duynvh/go-flutter/repository/repo_impl/user_repo_impl.go line=31
+time="2020-10-19T23:46:45.571388+07:00" level=error file=/Users/nguyenduy/Documents/workspace/codes/golang/Go/src/github.com/duynvh/go-flutter/handler/auth_handler.go line=32
+time="2020-10-19T23:47:03.828749+07:00" level=error file=/Users/nguyenduy/Documents/workspace/codes/golang/Go/src/github.com/duynvh/go-flutter/handler/auth_handler.go line=32
+time="2020-10-19T23:47:26.665461+07:00" level=error file=/Users/nguyenduy/Documents/workspace/codes/golang/Go/src/github.com/duynvh/go-flutter/handler/auth_handler.go line=92
+time="2020-10-19T23:49:02.516813+07:00" level=error msg="Mật khẩu tối thiểu 8 kí tự" file=/Users/nguyenduy/Documents/workspace/codes/golang/Go/src/github.com/duynvh/go-flutter/handler/auth_handler.go line=32

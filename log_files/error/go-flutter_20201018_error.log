@@ -1,0 +1,1 @@
+time="2020-10-18T09:37:08.535452+07:00" level=error msg="pq: syntax error at or near \"duynvh301196\"" file=/Users/nguyenduy/Documents/workspace/codes/golang/Go/src/github.com/duynvh/go-flutter/repository/repo_impl/user_repo_impl.go line=51

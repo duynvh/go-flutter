@@ -8,12 +8,12 @@ import (
 )
 
 type Sql struct {
-	Db *sqlx.DB
-	Host string
-	Port int
+	Db       *sqlx.DB
+	Host     string
+	Port     int
 	UserName string
 	Password string
-	DbName string
+	DbName   string
 }
 
 func (s *Sql) Connect() {
