@@ -2,26 +2,28 @@ package main
 
 import (
 	"fmt"
-	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
+	echoSwagger "github.com/swaggo/echo-swagger"
 	"go-flutter/db"
-	"go-flutter/handler"
-	"go-flutter/helper"
-	log "go-flutter/log"
+	"go-flutter/log"
 	"go-flutter/repository/repo_impl"
-	"github.com/swaggo/echo-swagger"
 	"go-flutter/router"
 	"os"
 	"strconv"
+
+	//"github.com/joho/godotenv"
+	"go-flutter/handler"
+	"go-flutter/helper"
+	//"go-flutter/log"
 	"time"
 )
 
 func init() {
-	// Load Env
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	//Load Env
+	//err := godotenv.Load()
+	//if err != nil {
+	//	log.Fatal("Error loading .env file")
+	//}
 
 	log.InitLogger(false)
 }
@@ -45,12 +47,36 @@ func init() {
 // @BasePath /
 func main() {
 	dbPort, _ :=  strconv.Atoi(os.Getenv("DB_PORT"))
+	if dbPort == 0 {
+		dbPort = 5432
+	}
+
+	dbHost :=  os.Getenv("DB_HOST")
+	if dbHost == "" {
+		dbHost = "localhost"
+	}
+
+	dbUserName :=  os.Getenv("DB_USERNAME")
+	if dbUserName == "" {
+		dbUserName = "postgres"
+	}
+
+	dbPassword :=  os.Getenv("DB_PASSWORD")
+	if dbPassword == "" {
+		dbPassword = "123123"
+	}
+
+	dbName :=  os.Getenv("DB_NAME")
+	if dbName == "" {
+		dbName = "go-flutter"
+	}
+
 	sql := &db.Sql{
-		Host:     os.Getenv("DB_HOST"),
+		Host:     dbHost,
 		Port:     dbPort,
-		UserName: os.Getenv("DB_USERNAME"),
-		Password: os.Getenv("DB_PASSWORD"),
-		DbName:   os.Getenv("DB_NAME"),
+		UserName: dbUserName,
+		Password: dbPassword,
+		DbName:   dbName,
 	}
 
 	sql.Connect()

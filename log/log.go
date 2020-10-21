@@ -2,7 +2,7 @@ package log
 
 import (
 	"encoding/json"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
 	rotatelogs "github.com/lestrrat/go-file-rotatelogs"
 	"github.com/rifflock/lfshook"

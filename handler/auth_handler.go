@@ -3,7 +3,7 @@ package handler
 import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/google/uuid"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"go-flutter/banana"
 	"go-flutter/log"
 	"go-flutter/model"
@@ -17,6 +17,16 @@ type AuthHandler struct {
 	UserRepo repository.UserRepo
 }
 
+// SignIn godoc
+// @Summary Sign in to access your account
+// @Tags auth-service
+// @Accept  json
+// @Produce  json
+// @Param data body req.ReqSignIn true "user"
+// @Success 200 {object} model.Response
+// @Failure 400 {object} model.Response
+// @Failure 500 {object} model.Response
+// @Router /auth/sign-in [post]
 func (a *AuthHandler) HandleSignIn(c echo.Context) error {
 	req := req.ReqSignIn{}
 
@@ -77,6 +87,17 @@ func (a *AuthHandler) HandleSignIn(c echo.Context) error {
 	})
 }
 
+// SignUp godoc
+// @Summary Create new account
+// @Tags auth-service
+// @Accept  json
+// @Produce  json
+// @Param data body req.ReqSignUp true "user"
+// @Success 200 {object} model.Response
+// @Failure 400 {object} model.Response
+// @Failure 404 {object} model.Response
+// @Failure 500 {object} model.Response
+// @Router /auth/sign-up [post]
 func (a *AuthHandler) HandleSignUp(c echo.Context) error {
 	req := req.ReqSignUp{}
 
@@ -148,6 +169,15 @@ func (a *AuthHandler) HandleSignUp(c echo.Context) error {
 	})
 }
 
+// Profile godoc
+// @Summary get user profile
+// @Tags user-service
+// @Accept  json
+// @Produce  json
+// @Security jwt
+// @Success 200 {object} model.Response
+// @Failure 500 {object} model.Response
+// @Router /users/profile [get]
 func (a *AuthHandler) Profile(c echo.Context) error {
 	tokenData := c.Get("user").(*jwt.Token)
 	claims := tokenData.Claims.(*model.JwtCustomClaims)
@@ -176,6 +206,17 @@ func (a *AuthHandler) Profile(c echo.Context) error {
 	})
 }
 
+
+// UpdateProfile godoc
+// @Summary get user profile
+// @Tags user-service
+// @Accept  json
+// @Produce  json
+// @Param data body req.ReqUpdateUser true "user"
+// @Security jwt
+// @Success 200 {object} model.Response
+// @Failure 500 {object} model.Response
+// @Router /users/profile/update [put]
 func (a *AuthHandler) UpdateProfile(c echo.Context) error {
 	req := req.ReqUpdateUser{}
 	if err := c.Bind(&req); err != nil {

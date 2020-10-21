@@ -1,0 +1,2 @@
+time="2020-10-21T09:44:27.9957215+07:00" level=error msg="FullName là bắt buộc \n Mật khẩu tối thiểu 8 kí tự" file="D:/Code/learn-go/go-flutter/handler/auth_handler.go" line=93
+time="2020-10-21T09:44:38.1359067+07:00" level=error msg="FullName là bắt buộc" file="D:/Code/learn-go/go-flutter/handler/auth_handler.go" line=93
